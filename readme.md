@@ -1,15 +1,15 @@
 # ATM Training Scenario Generation and Evaluation
 
-This repository contains scripts for generating and evaluating synthetic **Air Traffic Management (ATM)** training scenarios using LLMs and automated evaluation metrics.
+This repository contains scripts for generating and evaluating synthetic **Air Traffic Management (ATM)** training scenarios using LLMs. It also contains an LLM-as-a-judge evaluation framework where LLM-generated scripts are evaluated on a custom-defined rubric.
 
 ## Overview
 
 The workflow consists of three main steps:
 
-1. Define prompts and few-shot examples
-2. Generate synthetic training scenarios using Azure OpenAI
-3. Evaluate generated scenarios using GEval metrics
-4. Visualize evaluation results
+1. Define prompts and few-shot examples in (`prompts.py`)
+2. Generate synthetic training scenarios using LLM (`gen_scenarios.py`)
+3. Evaluate generated scenarios using GEval metrics (`eval.py`)
+4. Visualize evaluation results (`eval_viz.ipynb`)
 
 ---
 
@@ -27,7 +27,7 @@ These prompts guide the LLM to produce realistic and structured scenarios suitab
 
 Generates training scenarios from prompts stored in a CSV file using **Azure OpenAI**.
 
-The script reads prompts from the input CSV, generates scenarios with the LLM, and writes the results back to a CSV file.
+The script reads prompts from the input CSV (`input_scenarios.csv`), generates scenarios with the LLM, and writes the results back to a CSV file. By default, the LLM-generated scenarios are written to the same input file–––this makes it easy to pass the same file to `eval.py` for evaluation. Note that handwritten scenarios should be provided in the input file in the Scenario column, whereas this column should be blank for rows where the LLM must generate a scenario.  
 
 ### Expected Input CSV Columns
 
@@ -114,18 +114,16 @@ eval_viz.ipynb
 
 # Requirements
 
-Typical dependencies include:
-
-* Python 3.9+
-* pandas
-* deepeval
-* Azure OpenAI SDK
-
 Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
+Python version 3.13
+
+Other requirements
+* Azure OpenAI SDK
+* API key from Confident AI to view evaluation results from `eval.py` in DeepEval dashboard, and to export evaluation results csv file required by `eval_viz.ipynb`
 
 ---
 
