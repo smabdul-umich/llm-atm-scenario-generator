@@ -1,0 +1,7 @@
+pandas
+numpy
+matplotlib
+seaborn
+python-dotenv
+langchain-openai
+deepeval
