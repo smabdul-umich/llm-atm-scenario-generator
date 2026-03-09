@@ -87,6 +87,15 @@ The notebook loads the evaluation spreadsheet exported from the DeepEval platfor
 
 The notebook expects the **evaluation spreadsheet exported from the DeepEval platform**.
 
+## `app.py`
+This is the graphical user interface (GUI) for generating scenarios. It functions identically to `gen_scenarios.py`, but is designed to be used by end users (e.g., NAS stakeholders) to generate scenarios, provide feedback, etc. It is currently configured to generate scenarios for EWR, but this can be modified by changing/removing the weather context for EWR.
+
+### Run
+
+```bash
+streamlit run app.py
+```
+
 ---
 
 # Typical Workflow
